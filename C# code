@@ -1,0 +1,42 @@
+using System;
+
+namespace TipCalculator
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Total amount of money to divide
+            Console.Write("Enter the total amount of money to divide: ");
+            double totalAmount = double.Parse(Console.ReadLine());
+
+            // Number of staff members
+            Console.Write("Enter the number of staff members: ");
+            int numStaff = int.Parse(Console.ReadLine());
+
+            // Here I can store the number of hours worked by each staff member
+            double[] hoursWorked = new double[numStaff];
+
+            // Number of hours worked by each staff member
+            for (int i = 0; i < numStaff; i++)
+            {
+                Console.Write("Enter the number of hours worked by staff member " + (i+1) + ": ");
+                hoursWorked[i] = double.Parse(Console.ReadLine());
+            }
+
+            // Calculate the total number of hours worked by all staff members
+            double totalHours = 0;
+            for (int i = 0; i < numStaff; i++)
+            {
+                totalHours += hoursWorked[i];
+            }
+
+            // Divide the total amount of money over each staff member based on the number of hours worked
+            for (int i = 0; i < numStaff; i++)
+            {
+                double share = (hoursWorked[i] / totalHours) * totalAmount;
+                Console.WriteLine("Staff member " + (i+1) + " gets a share of $" + share);
+            }
+        }
+    }
+}
